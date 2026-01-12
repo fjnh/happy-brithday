@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Happy Birthday Shubhi | From Ishuu</title>
+    
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Poppins:wght@300;600&family=Pacifico&display=swap" rel="stylesheet">
+
+    <style>
+        :root {
+            --neon-pink: #ff00ff;
+            --neon-purple: #9d00ff;
+            --neon-magenta: #ff007f;
+            --glow: 0 0 10px #ff00ff, 0 0 20px #ff00ff, 0 0 40px #ff00ff;
+        }
+
+        body, html {
+            margin: 0;
+            padding: 0;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            background: linear-gradient(-45deg, #1a001a, #4a004a, #000000, #33001a);
+            background-size: 400% 400%;
+            animation: gradientBG 15s ease infinite;
+            font-family: 'Poppins', sans-serif;
+            color: white;
+            cursor: pointer;
+        }
+
+        @keyframes gradientBG {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        /* Repeating Parallax Background Text */
+        .bg-text-container {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 200%;
+            height: 200%;
+            z-index: 0;
+            pointer-events: none;
+            opacity: 0.12;
+            transform: rotate(-15deg);
+            display: flex;
+            flex-wrap: wrap;
+            animation: parallaxMove 50s linear infinite;
+        }
+
+        .bg-text {
+            font-size: 1.8rem;
+            margin: 25px;
+            white-space: nowrap;
+            color: var(--neon-pink);
+            text-shadow: 0 0 5px var(--neon-pink);
+            font-family: 'Pacifico', cursive;
+        }
+
+        @keyframes parallaxMove {
+            from { transform: translate(0, 0); }
+            to { transform: translate(-15%, -15%); }
+        }
+
+        /* Floating Balloons & Candles */
+        .floating-element {
+            position: fixed;
+            bottom: -100px;
+            z-index: 1;
+            pointer-events: none;
+        }
+
+        .balloon {
+            width: 45px;
+            height: 55px;
+            background: rgba(255, 0, 127, 0.45);
+            border-radius: 50%;
+            animation: floatUp 14s linear infinite;
+            box-shadow: 0 0 25px var(--neon-magenta);
+        }
+
+        .candle {
+            width: 8px;
+            height: 35px;
+            background: linear-gradient(to top, #eee, #fff);
+            animation: floatUp 18s linear infinite;
+        }
+
+        .flame {
+            width: 10px;
+            height: 15px;
+            background: #ffcc00;
+            border-radius: 50% 50% 20% 20%;
+            position: absolute;
+            top: -18px;
+            animation: flicker 0.1s infinite alternate;
+            box-shadow: 0 0 15px #ffcc00;
+        }
+
+        @keyframes floatUp {
+            0% { transform: translateY(0) rotate(0deg); opacity: 0; }
+            10% { opacity: 0.7; }
+            90% { opacity: 0.7; }
+            100% { transform: translateY(-125vh) rotate(25deg); opacity: 0; }
+        }
+
+        @keyframes flicker {
+            from { opacity: 0.7; transform: scale(1); }
+            to { opacity: 1; transform: scale(1.3); }
+        }
+
+        header {
+            position: fixed;
+            top: 25px;
+            width: 100%;
+            text-align: center;
+            z-index: 10;
+        }
+
+        h1 {
+            font-family: 'Dancing Script', cursive;
+            font-size: 3.5rem;
+            color: #fff;
+            text-shadow: var(--glow);
+            animation: neonPulse 2.5s infinite alternate;
+            margin: 0;
+        }
+
+        /* Slider */
+        .slider-container {
+            position: relative;
+            width: 100vw;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 5;
+        }
+
+        .slide {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            display: none;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 20px;
+        }
+
+        .slide.active {
+            display: flex;
+            animation: fadeIn 1.2s ease-out forwards;
+        }
+
+        .slide img {
+            max-width: 95vw;
+            max-height: 65vh;
+            object-fit: contain;
+            border-radius: 12px;
+            box-shadow: 0 0 35px rgba(255, 0, 255, 0.4);
+        }
+
+        .wish-text {
+            margin-top: 25px;
+            font-size: 1.8rem;
+            font-family: 'Dancing Script', cursive;
+            background: rgba(0, 0, 0, 0.4);
+            padding: 10px 35px;
+            border-radius: 50px;
+            border: 1px solid rgba(255, 0, 255, 0.3);
+            backdrop-filter: blur(8px);
+            text-shadow: 2px 2px 5px black;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: scale(0.95); }
+            to { opacity: 1; transform: scale(1); }
+        }
+
+        footer {
+            position: fixed;
+            bottom: 30px;
+            width: 100%;
+            text-align: center;
+            z-index: 10;
+        }
+
+        .footer-text {
+            font-family: 'Pacifico', cursive;
+            font-size: 1.4rem;
+            color: #fff;
+            text-shadow: 0 0 12px var(--neon-magenta);
+            line-height: 1.5;
+        }
+    </style>
+</head>
+<body onclick="startExperience()">
+
+    <div class="bg-text-container" id="bgText"></div>
+    <div id="floaters"></div>
+
+    <header>
+        <h1>Happy Birthday Shubhi 🎉</h1>
+    </header>
+
+    <div class="slider-container" id="slider">
+        </div>
+
+    <footer>
+        <div class="footer-text">
+            A lot of love 💖<br>
+            Happy Birthday Shubhi 🎂✨<br>
+            — Ishuu
+        </div>
+    </footer>
+
+    <audio id="bgMusic" loop>
+        <source src="music.mp3" type="audio/mpeg">
+    </audio>
+
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+
+    <script>
+        const images = [
+           { src: 'pic1.jpg', wish: "Wishing you a day full of surprises! ✨" },
+            { src: 'pic2.jpg', wish: "May your kindness always return to you. 🌸" },
+            { src: 'pic3.jpg', wish: ".......Garbaa's Queen.......! 💖" },
+            { src: 'pic4.jpg', wish: "Areee... Smile toh dekhooo... 🌟" },
+            { src: 'pic5.jpg', wish: "Radhe Radhe ji....... 🌷" },
+            { src: 'pic6.jpg', wish: "dhaappaaa ssssuuuiiiii....✨" },
+            { src: 'pic7.jpg', wish: "May your heart be happy today and always! 🤗" },
+            { src: 'pic8.jpg', wish: "firse dhapaaa rangoli banayegi ! 💝" },
+            { src: 'pic9.jpg', wish: "photo click karwane ka time bhi na hai batao party chaiyyeee.." }
+        ];
+
+        let currentSlide = 0;
+        const slider = document.getElementById('slider');
+        const bgMusic = document.getElementById('bgMusic');
+        let hasStarted = false;
+
+        function initSlider() {
+            slider.innerHTML = ''; 
+            images.forEach((img, index) => {
+                const div = document.createElement('div');
+                div.className = `slide ${index === 0 ? 'active' : ''}`;
+                div.innerHTML = `
+                    <img src="${img.src}" alt="Shubhi Pic" onerror="this.src='https://via.placeholder.com/800x600?text=Please+check+pic9.jpg+exists'">
+                    <div class="wish-text">${img.wish}</div>
+                `;
+                slider.appendChild(div);
+            });
+        }
+
+        function nextSlide() {
+            const slides = document.querySelectorAll('.slide');
+            if(slides.length === 0) return;
+            
+            slides[currentSlide].classList.remove('active');
+            currentSlide = (currentSlide + 1) % slides.length;
+            slides[currentSlide].classList.add('active');
+            
+            if(currentSlide % 2 === 0) {
+                confetti({
+                    particleCount: 40,
+                    spread: 70,
+                    origin: { y: 0.8 },
+                    colors: ['#ff00ff', '#ffffff', '#00e5ff']
+                });
+            }
+        }
+
+        function createFloaters() {
+            const container = document.getElementById('floaters');
+            for(let i=0; i<25; i++) {
+                const b = document.createElement('div');
+                b.className = 'floating-element balloon';
+                b.style.left = Math.random() * 100 + 'vw';
+                b.style.animationDelay = Math.random() * 15 + 's';
+                container.appendChild(b);
+
+                const c = document.createElement('div');
+                c.className = 'floating-element candle';
+                c.style.left = Math.random() * 100 + 'vw';
+                c.style.animationDelay = Math.random() * 18 + 's';
+                c.innerHTML = '<div class="flame"></div>';
+                container.appendChild(c);
+            }
+        }
+
+        function createBgText() {
+            const container = document.getElementById('bgText');
+            for(let i=0; i<120; i++) {
+                const span = document.createElement('span');
+                span.className = 'bg-text';
+                span.innerText = 'Happy Birthday Shubhi';
+                container.appendChild(span);
+            }
+        }
+
+        function startExperience() {
+            if (!hasStarted) {
+                bgMusic.play().catch(e => console.log("Audio waiting for user click..."));
+                confetti({
+                    particleCount: 200,
+                    spread: 90,
+                    origin: { y: 0.6 }
+                });
+                hasStarted = true;
+            }
+        }
+
+        window.onload = () => {
+            initSlider();
+            createFloaters();
+            createBgText();
+            setInterval(nextSlide, 5000);
+        };
+    </script>
+</body>
+</html>
